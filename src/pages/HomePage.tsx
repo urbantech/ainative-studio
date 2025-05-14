@@ -24,9 +24,11 @@ const HomePage = () => {
             Experience the power of AI-native, full-stack development with memory, reasoning, and quantum acceleration.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
-              Start Free Trial
-            </Button>
+            <a href="http://calendly.com/seedlingstudio/" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="bg-primary hover:bg-primary/90">
+                Book a Call
+              </Button>
+            </a>
             <Link to="/pricing">
               <Button size="lg" variant="outline">
                 See Pricing
