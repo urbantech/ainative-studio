@@ -28,6 +28,16 @@ const Header = () => {
     { name: 'Download', path: '/download' },
   ];
 
+  const scrollToPricing = (e: React.MouseEvent) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      const pricingSection = document.getElementById('pricing');
+      if (pricingSection) {
+        pricingSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <header
       className={cn(
@@ -40,7 +50,7 @@ const Header = () => {
       <div className="container-custom mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <Link to="/" className="text-2xl font-bold text-gray-800 dark:text-white">
-            <span className="text-[#FF6B00]">⚡</span>AI<span className="text-primary">Native</span>
+            <span className="text-[#FF6B00]">⚡</span>Access<span className="text-primary">Kit</span>
           </Link>
         </div>
 
@@ -50,6 +60,7 @@ const Header = () => {
             <Link
               key={item.name}
               to={item.path}
+              onClick={item.path === '/#pricing' ? scrollToPricing : undefined}
               className="text-sm font-medium text-neutral-muted hover:text-primary dark:text-gray-200 dark:hover:text-primary transition-colors"
             >
               {item.name}
@@ -111,8 +122,13 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.path}
+                onClick={(e) => {
+                  if (item.path === '/#pricing') {
+                    scrollToPricing(e);
+                  }
+                  setMobileMenuOpen(false);
+                }}
                 className="text-lg font-medium text-neutral-muted hover:text-primary dark:text-gray-200 dark:hover:text-primary"
-                onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}
               </Link>
@@ -134,6 +150,6 @@ const Header = () => {
       )}
     </header>
   );
-};
+}
 
 export default Header;

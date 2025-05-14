@@ -1,10 +1,11 @@
 import React from 'react';
 import { ButtonCustom } from '@/components/ui/button-custom';
 import { ArrowRight, Play } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+    <section className="pt-40 pb-16 md:pt-48 md:pb-24 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
       <div className="container-custom mx-auto text-center">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white leading-tight mb-6">
           Reduce accessibility gaps in your<br />websites and mobile apps.
@@ -16,9 +17,11 @@ const Hero = () => {
           <ButtonCustom variant="primary" size="lg" className="flex items-center justify-center">
             Get Started FREE
           </ButtonCustom>
-          <ButtonCustom variant="outline" size="lg" className="flex items-center justify-center">
-            Talk to us
-          </ButtonCustom>
+          <Link to="/#pricing">
+            <ButtonCustom variant="outline" size="lg" className="flex items-center justify-center">
+              See Pricing
+            </ButtonCustom>
+          </Link>
         </div>
       </div>
     </section>
