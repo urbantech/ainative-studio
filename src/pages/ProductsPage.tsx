@@ -1,89 +1,195 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Box, Zap, Shield } from "lucide-react";
+import { 
+  ArrowRight, 
+  Brain, 
+  Cpu, 
+  Code, 
+  Search, 
+  GitBranch, 
+  Bug, 
+  Database,
+  Network,
+  Zap,
+  CheckCircle2,
+  BarChart4,
+  Workflow
+} from 'lucide-react';
 
 const ProductsPage = () => {
-  const products = [
+  const features = [
     {
-      title: "Basic",
-      description: "Perfect for individuals and small teams",
-      features: [
-        "Up to 10 projects",
-        "Basic analytics",
-        "24/7 support",
-        "Community access"
-      ],
-      price: "$9.99",
-      period: "month"
+      title: "Code Search",
+      description: "Semantic search powered by quantum-enhanced neural networks",
+      icon: Search,
+      completed: true
     },
     {
-      title: "Pro",
-      description: "Ideal for growing businesses",
-      features: [
-        "Unlimited projects",
-        "Advanced analytics",
-        "Priority support",
-        "API access"
-      ],
-      price: "$29.99",
-      period: "month"
+      title: "Refactoring",
+      description: "Intelligent code restructuring with context awareness",
+      icon: GitBranch,
+      completed: true
     },
     {
-      title: "Enterprise",
-      description: "For large organizations",
-      features: [
-        "Custom solutions",
-        "Dedicated support team",
-        "SLA guarantees",
-        "Advanced security"
-      ],
-      price: "Custom",
-      period: "year"
+      title: "Debugging",
+      description: "Advanced error detection and correction",
+      icon: Bug,
+      completed: true
+    },
+    {
+      title: "Repo Understanding",
+      description: "Deep codebase analysis and documentation",
+      icon: Code,
+      completed: true
+    },
+    {
+      title: "Checkpoints",
+      description: "Automated code versioning and rollback",
+      icon: CheckCircle2,
+      completed: true
+    },
+    {
+      title: "CI/CD Integration",
+      description: "Seamless integration with your deployment pipeline",
+      icon: Workflow,
+      completed: true
     }
   ];
 
   return (
-    <div className="container mx-auto py-16 px-4">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold tracking-tight mb-4">Our Products</h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Choose the perfect plan for your needs. Whether you're just starting out or running a large organization,
-          we have you covered.
-        </p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+      <div className="container mx-auto px-4 py-16">
+        {/* Hero Section */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="text-center mb-8">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">
+              Cody IDE
+            </h1>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              The world's first AI-native development environment powered by quantum neural networks
+            </p>
+          </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {products.map((product, index) => (
-          <Card key={index} className="flex flex-col">
-            <CardHeader>
-              <CardTitle className="text-2xl">{product.title}</CardTitle>
-              <CardDescription>{product.description}</CardDescription>
-            </CardHeader>
-            <CardContent className="flex-1">
-              <div className="mb-6">
-                <span className="text-3xl font-bold">{product.price}</span>
-                {product.price !== "Custom" && (
-                  <span className="text-muted-foreground">/{product.period}</span>
-                )}
-              </div>
-              <ul className="space-y-4 mb-8">
-                {product.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-2">
-                    {index === 0 ? <Box className="h-5 w-5" /> : 
-                     index === 1 ? <Zap className="h-5 w-5" /> : 
-                     <Shield className="h-5 w-5" />}
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <Button className="w-full mt-auto group">
-                Get Started
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </CardContent>
+          {/* IDE Preview */}
+          <Card className="border-0 shadow-2xl overflow-hidden bg-gray-900 p-1">
+            <div className="rounded-lg overflow-hidden">
+              <img
+                src="https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg"
+                alt="Cody IDE Interface"
+                className="w-full object-cover"
+              />
+            </div>
           </Card>
-        ))}
+        </div>
+
+        {/* Core Capabilities */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center">
+            Core Capabilities
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+              <CardHeader>
+                <Brain className="h-8 w-8 text-primary mb-2" />
+                <CardTitle>Multi-Agent Orchestration</CardTitle>
+                <CardDescription>
+                  Coordinate multiple AI agents for complex development tasks with shared context and memory
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+              <CardHeader>
+                <Database className="h-8 w-8 text-primary mb-2" />
+                <CardTitle>Memory + Context Layer</CardTitle>
+                <CardDescription>
+                  Persistent memory system for maintaining context across development sessions
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+              <CardHeader>
+                <Cpu className="h-8 w-8 text-primary mb-2" />
+                <CardTitle>Quantum-Enhanced Hooks</CardTitle>
+                <CardDescription>
+                  React hooks supercharged with quantum computing capabilities
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+        </div>
+
+        {/* QNN Section */}
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
+                Quantum Neural Network (QNN)
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">
+                Our quantum-enhanced neural network delivers unprecedented performance improvements:
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <BarChart4 className="h-6 w-6 text-primary" />
+                  <span className="text-lg">44.6% speedup on semantic search</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <Zap className="h-6 w-6 text-primary" />
+                  <span className="text-lg">Enhanced code quality & accuracy</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <Network className="h-6 w-6 text-primary" />
+                  <span className="text-lg">Hybrid GPU + quantum training</span>
+                </div>
+              </div>
+            </div>
+            <Card className="border-0 bg-gradient-to-br from-primary/5 to-primary/10 p-8">
+              <div className="grid grid-cols-3 gap-4 opacity-80">
+                {Array.from({ length: 9 }).map((_, i) => (
+                  <div key={i} className="aspect-square rounded-lg bg-primary/20 animate-pulse" 
+                    style={{ animationDelay: `${i * 0.1}s` }}
+                  />
+                ))}
+              </div>
+            </Card>
+          </div>
+        </div>
+
+        {/* Feature Grid */}
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center">
+            Development Features
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((feature, index) => (
+              <Card key={index} className="border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-2">
+                    <feature.icon className="h-6 w-6 text-primary" />
+                    {feature.completed && (
+                      <span className="text-sm text-green-500 flex items-center">
+                        <CheckCircle2 className="h-4 w-4 mr-1" />
+                        Ready
+                      </span>
+                    )}
+                  </div>
+                  <CardTitle>{feature.title}</CardTitle>
+                  <CardDescription>{feature.description}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Button className="bg-primary hover:bg-primary/90 text-white" size="lg">
+              Try Cody IDE Now
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );
