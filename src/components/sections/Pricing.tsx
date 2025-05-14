@@ -26,9 +26,7 @@ const features: PricingFeature[] = [
 ];
 
 const Pricing = () => {
-  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'annual'>('annual');
   const [showAllFeatures, setShowAllFeatures] = useState(false);
-
   const displayedFeatures = showAllFeatures ? features : features.slice(0, 6);
 
   return (
@@ -41,31 +39,6 @@ const Pricing = () => {
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Choose the plan that's right for your project. All plans include core functionality and regular updates.
           </p>
-
-          <div className="mt-8 inline-flex items-center bg-gray-100 dark:bg-gray-800 p-1 rounded-full">
-            <button
-              className={cn(
-                "px-6 py-2 text-sm font-medium rounded-full transition",
-                billingPeriod === 'monthly'
-                  ? "bg-white dark:bg-gray-700 shadow-sm text-gray-900 dark:text-white"
-                  : "text-gray-600 dark:text-gray-300"
-              )}
-              onClick={() => setBillingPeriod('monthly')}
-            >
-              Monthly
-            </button>
-            <button
-              className={cn(
-                "px-6 py-2 text-sm font-medium rounded-full transition",
-                billingPeriod === 'annual'
-                  ? "bg-white dark:bg-gray-700 shadow-sm text-gray-900 dark:text-white"
-                  : "text-gray-600 dark:text-gray-300"
-              )}
-              onClick={() => setBillingPeriod('annual')}
-            >
-              Annual <span className="text-[#4B6FED] text-xs font-medium">Save 20%</span>
-            </button>
-          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
@@ -118,9 +91,7 @@ const Pricing = () => {
                 For developers and small teams
               </p>
               <div className="mb-6">
-                <span className="text-4xl font-bold text-[#0E0D35] dark:text-white">
-                  ${billingPeriod === 'monthly' ? '15' : '12'}
-                </span>
+                <span className="text-4xl font-bold text-[#0E0D35] dark:text-white">$15</span>
                 <span className="text-gray-500 dark:text-gray-400">/month</span>
               </div>
               <ButtonCustom variant="primary" className="w-full mb-6">
