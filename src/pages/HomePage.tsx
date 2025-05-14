@@ -18,12 +18,12 @@ const HomePage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="http://calendly.com/seedlingstudio/" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto">
                 Book a Call
               </Button>
             </a>
             <Link to="/pricing">
-              <Button size="lg" variant="outline">
+              <Button size="lg" variant="outline" className="text-gray-700 dark:text-gray-200 w-full sm:w-auto">
                 See Pricing
               </Button>
             </Link>
