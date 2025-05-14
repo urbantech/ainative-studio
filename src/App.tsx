@@ -13,6 +13,7 @@ import ProductsPage from '@/pages/ProductsPage';
 import EnterprisePage from '@/pages/EnterprisePage';
 import DownloadPage from '@/pages/DownloadPage';
 import PricingPage from '@/pages/PricingPage';
+import ContactPage from '@/pages/ContactPage';
 import './App.css';
 
 // Scroll to hash component
@@ -36,7 +37,7 @@ const ScrollToHash = () => {
 function App() {
   return (
     <Router>
-      <ThemeProvider defaultTheme="light">
+      <ThemeProvider defaultTheme="dark">
         <div className="page-wrapper">
           <Header />
           <ScrollToHash />
@@ -52,6 +53,7 @@ function App() {
               <Route path="/enterprise" element={<EnterprisePage />} />
               <Route path="/download" element={<DownloadPage />} />
               <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/contact" element={<ContactPage />} />
             </Routes>
           </main>
           <Footer />
