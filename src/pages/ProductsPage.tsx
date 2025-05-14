@@ -75,9 +75,9 @@ const ProductsPage = () => {
           <Card className="border-0 shadow-2xl overflow-hidden bg-gray-900 p-1">
             <div className="rounded-lg overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg"
-                alt="Cody IDE Interface"
-                className="w-full object-cover"
+                src="https://images.pexels.com/photos/7988079/pexels-photo-7988079.jpeg"
+                alt="Developers working at a hackathon"
+                className="w-full object-cover h-[500px]"
               />
             </div>
           </Card>
