@@ -106,14 +106,9 @@ const Footer = () => {
           <p className="text-gray-400 text-sm">
             © {new Date().getFullYear()} AiNative Studio, All rights reserved.
           </p>
-          <div className="mt-4 md:mt-0 flex space-x-6">
-            <Link to="/accessibility" className="text-gray-400 hover:text-primary text-sm transition-colors">
-              Accessibility
-            </Link>
-            <Link to="/status" className="text-gray-400 hover:text-primary text-sm transition-colors">
-              Status
-            </Link>
-          </div>
+          <p className="text-gray-400 text-sm mt-4 md:mt-0">
+            Built with 💚 in Santa Cruz, California
+          </p>
         </div>
       </div>
     </footer>
