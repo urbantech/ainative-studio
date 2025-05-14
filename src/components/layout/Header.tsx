@@ -21,14 +21,7 @@ const Header = () => {
   }, []);
 
   const navigation = [
-    { 
-      name: 'Products', 
-      path: '/products',
-      submenu: [
-        { name: 'AI Native Studio IDE', path: '/products/ide' },
-        { name: 'Quantum Neural Network', path: '/products/qnn' },
-      ]
-    },
+    { name: 'Products', path: '/products' },
     { name: 'Pricing', path: '/pricing' },
     { name: 'Enterprise', path: '/enterprise' },
     { name: 'Developer Resources', path: '/dev-resources' },
@@ -81,9 +74,9 @@ const Header = () => {
                 <Link to="/login">
                   <ButtonCustom variant="outline">Sign In</ButtonCustom>
                 </Link>
-                <Link to="/signup">
-                  <ButtonCustom variant="primary">Get Started FREE</ButtonCustom>
-                </Link>
+                <a href="http://calendly.com/seedlingstudio/" target="_blank" rel="noopener noreferrer">
+                  <ButtonCustom variant="primary">Book a Call</ButtonCustom>
+                </a>
               </>
             )}
           </div>
@@ -130,11 +123,11 @@ const Header = () => {
                   Sign In
                 </ButtonCustom>
               </Link>
-              <Link to="/signup" onClick={() => setMobileMenuOpen(false)}>
+              <a href="http://calendly.com/seedlingstudio/" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)}>
                 <ButtonCustom variant="primary" className="w-full">
-                  Get Started FREE
+                  Book a Call
                 </ButtonCustom>
-              </Link>
+              </a>
             </div>
           </nav>
         </div>
