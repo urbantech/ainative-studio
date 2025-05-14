@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Brain, Network, Scale, Cpu, Database, Users, Sparkles, ArrowRight, FileText, Book, Rocket, FlaskRound as Flask } from 'lucide-react';
+import { Brain, Network, Scale, Cpu, Database, Users, Sparkles, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
@@ -10,13 +10,6 @@ const HomePage = () => {
       {/* Hero Section */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
         <div className="container-custom mx-auto text-center relative">
-          {/* Animated grid background */}
-          <div className="absolute inset-0 grid grid-cols-8 gap-4 opacity-10">
-            {Array.from({ length: 64 }).map((_, i) => (
-              <div key={i} className="h-8 bg-primary/20 animate-pulse" style={{ animationDelay: `${i * 0.1}s` }}></div>
-            ))}
-          </div>
-          
           <h1 className="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white leading-tight mb-6">
             The AI Native Studio<br />for Builders
           </h1>
@@ -134,86 +127,6 @@ const HomePage = () => {
                 </CardDescription>
               </CardHeader>
             </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Ambassador Program */}
-      <section className="py-16 bg-white dark:bg-gray-900">
-        <div className="container-custom mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Join Our Ambassador Program</h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-8">
-                Help shape the future of AI-native development. Get early access to features, exclusive events, and connect with fellow builders.
-              </p>
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                Apply to be an Ambassador
-              </Button>
-            </div>
-            <div className="relative">
-              <img
-                src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg"
-                alt="Developers collaborating"
-                className="rounded-lg shadow-xl"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Builder Resources */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
-        <div className="container-custom mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Builder Resources</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Link to="/dev-resources">
-              <Card className="h-full hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-primary/20">
-                <CardHeader>
-                  <FileText className="h-8 w-8 text-primary mb-3" />
-                  <CardTitle className="text-xl">Documentation</CardTitle>
-                  <CardDescription>
-                    Comprehensive guides and API references
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
-            
-            <Link to="/tutorials">
-              <Card className="h-full hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-primary/20">
-                <CardHeader>
-                  <Book className="h-8 w-8 text-primary mb-3" />
-                  <CardTitle className="text-xl">Tutorials</CardTitle>
-                  <CardDescription>
-                    Step-by-step guides and examples
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
-            
-            <Link to="/credits">
-              <Card className="h-full hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-primary/20">
-                <CardHeader>
-                  <Rocket className="h-8 w-8 text-primary mb-3" />
-                  <CardTitle className="text-xl">Startup Credits</CardTitle>
-                  <CardDescription>
-                    Resources for early-stage companies
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
-            
-            <Link to="/research">
-              <Card className="h-full hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-primary/20">
-                <CardHeader>
-                  <Flask className="h-8 w-8 text-primary mb-3" />
-                  <CardTitle className="text-xl">Research</CardTitle>
-                  <CardDescription>
-                    Latest in quantum AI development
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
           </div>
         </div>
       </section>
