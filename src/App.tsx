@@ -14,6 +14,7 @@ import EnterprisePage from '@/pages/EnterprisePage';
 import DownloadPage from '@/pages/DownloadPage';
 import PricingPage from '@/pages/PricingPage';
 import ContactPage from '@/pages/ContactPage';
+import QNNPage from '@/pages/QNNPage';
 import './App.css';
 
 // Scroll to hash component
@@ -54,6 +55,7 @@ function App() {
               <Route path="/download" element={<DownloadPage />} />
               <Route path="/pricing" element={<PricingPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/products/qnn" element={<QNNPage />} />
             </Routes>
           </main>
           <Footer />

@@ -156,7 +156,7 @@ export default function ContactPage() {
             </CardHeader>
             <CardContent>
               <a href="http://calendly.com/seedlingstudio/" target="_blank" rel="noopener noreferrer">
-                <Button variant="default" className="bg-primary hover:bg-primary/90">
+                <Button variant="default" className="bg-primary hover:bg-primary/90 text-white">
                   Contact Enterprise Sales
                 </Button>
               </a>
