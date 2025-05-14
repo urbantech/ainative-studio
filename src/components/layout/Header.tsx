@@ -21,11 +21,11 @@ const Header = () => {
   }, []);
 
   const navigation = [
-    { name: 'Features', path: '/#features' },
+    { name: 'Products', path: '/products' },
     { name: 'Pricing', path: '/#pricing' },
-    { name: 'Support', path: '/support' },
-    { name: 'FAQ', path: '/faq' },
-    { name: 'Docs', path: '/docs' },
+    { name: 'Enterprise', path: '/enterprise' },
+    { name: 'Developer Resources', path: '/dev-resources' },
+    { name: 'Download', path: '/download' },
   ];
 
   return (
@@ -40,7 +40,7 @@ const Header = () => {
       <div className="container-custom mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <Link to="/" className="text-2xl font-bold text-gray-800 dark:text-white">
-            <span className="text-[#FF6B00]">⚡</span>Access<span className="text-primary">Kit</span>
+            <span className="text-[#FF6B00]">⚡</span>AI<span className="text-primary">Native</span>
           </Link>
         </div>
 

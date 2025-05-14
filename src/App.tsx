@@ -8,7 +8,10 @@ import LoginPage from '@/pages/LoginPage';
 import SignupPage from '@/pages/SignupPage';
 import SupportPage from '@/pages/SupportPage';
 import FAQPage from '@/pages/FAQPage';
-import DocsPage from '@/pages/DocsPage';
+import DevResourcesPage from '@/pages/DevResourcesPage';
+import ProductsPage from '@/pages/ProductsPage';
+import EnterprisePage from '@/pages/EnterprisePage';
+import DownloadPage from '@/pages/DownloadPage';
 import './App.css';
 
 // Scroll to hash component
@@ -43,7 +46,10 @@ function App() {
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/support" element={<SupportPage />} />
               <Route path="/faq" element={<FAQPage />} />
-              <Route path="/docs" element={<DocsPage />} />
+              <Route path="/dev-resources" element={<DevResourcesPage />} />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/enterprise" element={<EnterprisePage />} />
+              <Route path="/download" element={<DownloadPage />} />
             </Routes>
           </main>
           <Footer />
@@ -52,5 +58,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;
