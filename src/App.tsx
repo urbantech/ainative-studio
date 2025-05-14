@@ -37,10 +37,10 @@ function App() {
   return (
     <Router>
       <ThemeProvider defaultTheme="light">
-        <div className="min-h-screen flex flex-col">
+        <div className="page-wrapper">
           <Header />
           <ScrollToHash />
-          <main className="flex-1">
+          <main>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
