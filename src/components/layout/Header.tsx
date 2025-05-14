@@ -21,7 +21,14 @@ const Header = () => {
   }, []);
 
   const navigation = [
-    { name: 'Products', path: '/products' },
+    { 
+      name: 'Products', 
+      path: '/products',
+      submenu: [
+        { name: 'AI Native Studio IDE', path: '/products/ide' },
+        { name: 'Quantum Neural Network', path: '/products/qnn' },
+      ]
+    },
     { name: 'Pricing', path: '/pricing' },
     { name: 'Enterprise', path: '/enterprise' },
     { name: 'Developer Resources', path: '/dev-resources' },

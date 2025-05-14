@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Brain, Network, Scale, Cpu, Database, Users, Sparkles, ArrowRight } from 'lucide-react';
+import { Brain, Network, Scale, Cpu, Database, Users, Sparkles, ArrowRight, FileText, Book, Rocket, Flask } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
@@ -162,20 +162,55 @@ const HomePage = () => {
 
       {/* Builder Resources */}
       <section className="py-16 bg-gray-50 dark:bg-gray-800">
-        <div className="container-custom mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-12">Builder Resources</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <Link to="/dev-resources" className="hover:text-primary transition-colors">
-              Documentation
+        <div className="container-custom mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">Builder Resources</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <Link to="/dev-resources">
+              <Card className="h-full hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-primary/20">
+                <CardHeader>
+                  <FileText className="h-8 w-8 text-primary mb-3" />
+                  <CardTitle className="text-xl">Documentation</CardTitle>
+                  <CardDescription>
+                    Comprehensive guides and API references
+                  </CardDescription>
+                </CardHeader>
+              </Card>
             </Link>
-            <Link to="/tutorials" className="hover:text-primary transition-colors">
-              Tutorials
+            
+            <Link to="/tutorials">
+              <Card className="h-full hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-primary/20">
+                <CardHeader>
+                  <Book className="h-8 w-8 text-primary mb-3" />
+                  <CardTitle className="text-xl">Tutorials</CardTitle>
+                  <CardDescription>
+                    Step-by-step guides and examples
+                  </CardDescription>
+                </CardHeader>
+              </Card>
             </Link>
-            <Link to="/credits" className="hover:text-primary transition-colors">
-              Startup Credits
+            
+            <Link to="/credits">
+              <Card className="h-full hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-primary/20">
+                <CardHeader>
+                  <Rocket className="h-8 w-8 text-primary mb-3" />
+                  <CardTitle className="text-xl">Startup Credits</CardTitle>
+                  <CardDescription>
+                    Resources for early-stage companies
+                  </CardDescription>
+                </CardHeader>
+              </Card>
             </Link>
-            <Link to="/research" className="hover:text-primary transition-colors">
-              Research
+            
+            <Link to="/research">
+              <Card className="h-full hover:shadow-lg transition-all duration-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-primary/20">
+                <CardHeader>
+                  <Flask className="h-8 w-8 text-primary mb-3" />
+                  <CardTitle className="text-xl">Research</CardTitle>
+                  <CardDescription>
+                    Latest in quantum AI development
+                  </CardDescription>
+                </CardHeader>
+              </Card>
             </Link>
           </div>
         </div>
