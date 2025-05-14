@@ -5,7 +5,7 @@ import { Download, Apple, AppWindow as Windows, Link as Linux, Code, Terminal, S
 
 export default function DownloadPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800/50">
+    <div className="full-width-section bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800/50">
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
