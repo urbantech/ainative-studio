@@ -10,14 +10,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="text-2xl font-bold text-gray-800 dark:text-white mb-4 block">
-              <span className="text-[#FF6B00]">⚡</span>Access<span className="text-primary">Kit</span>
+              <span className="text-[#FF6B00]">⚡</span>AI<span className="text-primary">Native</span>
             </Link>
             <p className="text-gray-600 dark:text-gray-300 text-sm mb-6 max-w-md">
-              Improve how screen readers interpret your websites and applications with our comprehensive accessibility solution.
+              Build the future with AI-native development tools powered by quantum neural networks.
             </p>
             <div className="flex space-x-4">
               <a 
-                href="https://twitter.com/accesskit" 
+                href="https://twitter.com/ainativestudio" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors"
@@ -28,7 +28,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a 
-                href="https://github.com/accesskit"
+                href="https://github.com/ainativestudio"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors"
@@ -45,8 +45,8 @@ const Footer = () => {
             <h3 className="text-sm font-semibold text-gray-800 dark:text-white uppercase tracking-wider mb-4">Product</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/#features" className="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm transition-colors">
-                  Features
+                <Link to="/products" className="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm transition-colors">
+                  Products
                 </Link>
               </li>
               <li>
@@ -55,8 +55,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/docs" className="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm transition-colors">
-                  Documentation
+                <Link to="/dev-resources" className="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm transition-colors">
+                  Developer Resources
                 </Link>
               </li>
               <li>
@@ -99,7 +99,7 @@ const Footer = () => {
           "flex flex-col md:flex-row justify-between items-center"
         )}>
           <p className="text-gray-500 dark:text-gray-400 text-sm">
-            © {new Date().getFullYear()} AccessKit. All rights reserved.
+            © {new Date().getFullYear()} AiNative Studio, All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6">
             <Link to="/accessibility" className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary text-sm transition-colors">
