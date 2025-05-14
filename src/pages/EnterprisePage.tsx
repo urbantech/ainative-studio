@@ -1,25 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { 
-  Building2, 
-  Users, 
-  Shield, 
-  Zap, 
-  Brain,
-  Code,
-  Search,
-  GitBranch,
-  FileCode,
-  TestTube,
-  Bot,
-  Terminal,
-  ArrowRight,
-  CheckCircle2,
-  Network,
-  Tool,
-  Eye
-} from 'lucide-react';
+import { Building2, Users, Shield, Zap, Brain, Code, Search, GitBranch, FileCode, TestTube, Bot, Terminal, ArrowRight, CheckCircle2, Network, PenTool as Tool, Eye } from 'lucide-react';
 
 const FeatureTag = ({ children }: { children: React.ReactNode }) => (
   <div className="bg-primary/5 text-primary px-4 py-2 rounded-full text-sm font-medium">
