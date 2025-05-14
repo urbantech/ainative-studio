@@ -1,35 +1,35 @@
 import React, { useState } from 'react';
 import { ButtonCustom } from '@/components/ui/button-custom';
-import { Check, ChevronDown, ChevronUp } from 'lucide-react';
+import { Check, ChevronDown, ChevronUp, Cpu, Shield, Users, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface PricingFeature {
   title: string;
-  free: boolean;
+  start: boolean;
   pro: boolean;
+  teams: boolean;
   enterprise: boolean;
 }
 
 const features: PricingFeature[] = [
-  { title: 'Acronym vocalization', free: true, pro: true, enterprise: true },
-  { title: 'Phone number formatting', free: true, pro: true, enterprise: true },
-  { title: 'Date & time optimization', free: true, pro: true, enterprise: true },
-  { title: 'Basic measurements', free: true, pro: true, enterprise: true },
-  { title: 'Medical terms', free: false, pro: true, enterprise: true },
-  { title: 'Scientific notation', free: false, pro: true, enterprise: true },
-  { title: 'Custom vocabularies', free: false, pro: false, enterprise: true },
-  { title: 'Priority support', free: false, pro: false, enterprise: true },
+  { title: 'Local inference', start: true, pro: true, teams: true, enterprise: true },
+  { title: '50 completions/month', start: true, pro: true, teams: true, enterprise: true },
+  { title: 'Community support', start: true, pro: true, teams: true, enterprise: true },
+  { title: 'Hosted models, memory, 5 custom agents', start: false, pro: true, teams: true, enterprise: true },
+  { title: 'Semantic code context', start: false, pro: true, teams: true, enterprise: true },
+  { title: 'Quantum Boost add-on', start: false, pro: true, teams: true, enterprise: true },
+  { title: 'Admin dashboard, usage analytics', start: false, pro: false, teams: true, enterprise: true },
+  { title: 'Private VPC hosting, SSO', start: false, pro: false, teams: true, enterprise: true },
+  { title: 'RBAC, Hybrid deployments', start: false, pro: false, teams: false, enterprise: true },
+  { title: 'Access to QNN APIs', start: false, pro: false, teams: false, enterprise: true },
+  { title: 'Custom training & volume pricing', start: false, pro: false, teams: false, enterprise: true }
 ];
 
 const Pricing = () => {
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'annual'>('annual');
   const [showAllFeatures, setShowAllFeatures] = useState(false);
 
-  const toggleBillingPeriod = () => {
-    setBillingPeriod(billingPeriod === 'monthly' ? 'annual' : 'monthly');
-  };
-
-  const displayedFeatures = showAllFeatures ? features : features.slice(0, 4);
+  const displayedFeatures = showAllFeatures ? features : features.slice(0, 6);
 
   return (
     <section id="pricing" className="py-16 md:py-24 bg-white dark:bg-gray-900">
@@ -68,17 +68,19 @@ const Pricing = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {/* Free Plan */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+          {/* Start Plan */}
           <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg scale-in">
             <div className="p-6">
-              <h3 className="text-xl font-semibold text-[#0E0D35] dark:text-white mb-2">Free</h3>
+              <div className="flex items-center gap-2 mb-2">
+                <Cpu className="h-5 w-5 text-primary" />
+                <h3 className="text-xl font-semibold text-[#0E0D35] dark:text-white">Start</h3>
+              </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4 h-12">
-                Perfect for personal projects and small websites.
+                Perfect for trying out AI Native Studio
               </p>
               <div className="mb-6">
-                <span className="text-4xl font-bold text-[#0E0D35] dark:text-white">$0</span>
-                <span className="text-gray-500 dark:text-gray-400">/month</span>
+                <span className="text-4xl font-bold text-[#0E0D35] dark:text-white">Free</span>
               </div>
               <ButtonCustom variant="outline" className="w-full mb-6">
                 Get Started
@@ -86,14 +88,14 @@ const Pricing = () => {
               <div className="space-y-3">
                 {displayedFeatures.map((feature, index) => (
                   <div key={index} className="flex items-start">
-                    {feature.free ? (
+                    {feature.start ? (
                       <Check className="h-5 w-5 text-[#4B6FED] mt-0.5 mr-2 flex-shrink-0" />
                     ) : (
                       <div className="h-5 w-5 flex items-center justify-center mt-0.5 mr-2 flex-shrink-0">
                         <div className="h-1.5 w-1.5 rounded-full bg-gray-300 dark:bg-gray-600"></div>
                       </div>
                     )}
-                    <span className={feature.free ? "text-gray-700 dark:text-gray-300" : "text-gray-400 dark:text-gray-600"}>
+                    <span className={feature.start ? "text-gray-700 dark:text-gray-300" : "text-gray-400 dark:text-gray-600"}>
                       {feature.title}
                     </span>
                   </div>
@@ -108,23 +110,21 @@ const Pricing = () => {
               POPULAR
             </div>
             <div className="p-6">
-              <h3 className="text-xl font-semibold text-[#0E0D35] dark:text-white mb-2">Pro</h3>
+              <div className="flex items-center gap-2 mb-2">
+                <Zap className="h-5 w-5 text-primary" />
+                <h3 className="text-xl font-semibold text-[#0E0D35] dark:text-white">Pro</h3>
+              </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4 h-12">
-                Ideal for businesses and professional websites.
+                For developers and small teams
               </p>
               <div className="mb-6">
                 <span className="text-4xl font-bold text-[#0E0D35] dark:text-white">
-                  ${billingPeriod === 'monthly' ? '29' : '23'}
+                  ${billingPeriod === 'monthly' ? '15' : '12'}
                 </span>
                 <span className="text-gray-500 dark:text-gray-400">/month</span>
-                {billingPeriod === 'annual' && (
-                  <span className="ml-2 text-xs bg-[#4B6FED]/10 text-[#4B6FED] px-2 py-1 rounded-full">
-                    Billed annually
-                  </span>
-                )}
               </div>
               <ButtonCustom variant="primary" className="w-full mb-6">
-                Try for 14 days
+                Start Free Trial
               </ButtonCustom>
               <div className="space-y-3">
                 {displayedFeatures.map((feature, index) => (
@@ -145,12 +145,51 @@ const Pricing = () => {
             </div>
           </div>
 
+          {/* Teams Plan */}
+          <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg scale-in">
+            <div className="p-6">
+              <div className="flex items-center gap-2 mb-2">
+                <Users className="h-5 w-5 text-primary" />
+                <h3 className="text-xl font-semibold text-[#0E0D35] dark:text-white">Teams</h3>
+              </div>
+              <p className="text-gray-600 dark:text-gray-300 mb-4 h-12">
+                For growing development teams
+              </p>
+              <div className="mb-6">
+                <span className="text-4xl font-bold text-[#0E0D35] dark:text-white">$60</span>
+                <span className="text-gray-500 dark:text-gray-400">/user/month</span>
+              </div>
+              <ButtonCustom variant="outline" className="w-full mb-6">
+                Contact Sales
+              </ButtonCustom>
+              <div className="space-y-3">
+                {displayedFeatures.map((feature, index) => (
+                  <div key={index} className="flex items-start">
+                    {feature.teams ? (
+                      <Check className="h-5 w-5 text-[#4B6FED] mt-0.5 mr-2 flex-shrink-0" />
+                    ) : (
+                      <div className="h-5 w-5 flex items-center justify-center mt-0.5 mr-2 flex-shrink-0">
+                        <div className="h-1.5 w-1.5 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+                      </div>
+                    )}
+                    <span className={feature.teams ? "text-gray-700 dark:text-gray-300" : "text-gray-400 dark:text-gray-600"}>
+                      {feature.title}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
           {/* Enterprise Plan */}
           <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg scale-in">
             <div className="p-6">
-              <h3 className="text-xl font-semibold text-[#0E0D35] dark:text-white mb-2">Enterprise</h3>
+              <div className="flex items-center gap-2 mb-2">
+                <Shield className="h-5 w-5 text-primary" />
+                <h3 className="text-xl font-semibold text-[#0E0D35] dark:text-white">Enterprise</h3>
+              </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4 h-12">
-                Advanced features for large organizations.
+                Custom solutions for large organizations
               </p>
               <div className="mb-6">
                 <span className="text-4xl font-bold text-[#0E0D35] dark:text-white">Custom</span>
@@ -168,7 +207,7 @@ const Pricing = () => {
                         <div className="h-1.5 w-1.5 rounded-full bg-gray-300 dark:bg-gray-600"></div>
                       </div>
                     )}
-                    <span className="text-gray-700 dark:text-gray-300">
+                    <span className={feature.enterprise ? "text-gray-700 dark:text-gray-300" : "text-gray-400 dark:text-gray-600"}>
                       {feature.title}
                     </span>
                   </div>
@@ -178,7 +217,7 @@ const Pricing = () => {
           </div>
         </div>
 
-        {features.length > 4 && (
+        {features.length > 6 && (
           <div className="flex justify-center mt-8">
             <button
               onClick={() => setShowAllFeatures(!showAllFeatures)}
