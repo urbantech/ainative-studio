@@ -24,12 +24,12 @@ export default function EnterprisePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="http://calendly.com/seedlingstudio/" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto">
                 Schedule a Demo
               </Button>
             </a>
             <Link to="/pricing">
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" className="text-gray-700 dark:text-gray-200 w-full sm:w-auto">
                 View Plans
               </Button>
             </Link>
