@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Download, Apple, Windows, Linux, Code, Terminal, Search, Zap } from 'lucide-react';
+import { Download, Apple, AppWindow as Windows, Link as Linux, Code, Terminal, Search, Zap } from 'lucide-react';
 
 export default function DownloadPage() {
   return (
