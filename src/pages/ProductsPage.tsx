@@ -70,17 +70,6 @@ const ProductsPage = () => {
               The world's first AI-native development environment powered by quantum neural networks
             </p>
           </div>
-
-          {/* IDE Preview */}
-          <Card className="border-0 shadow-2xl overflow-hidden bg-gray-900 p-1">
-            <div className="rounded-lg overflow-hidden">
-              <img
-                src="https://images.pexels.com/photos/7988079/pexels-photo-7988079.jpeg"
-                alt="Developers working at a hackathon"
-                className="w-full object-cover h-[500px]"
-              />
-            </div>
-          </Card>
         </div>
 
         {/* Core Capabilities */}
@@ -89,7 +78,7 @@ const ProductsPage = () => {
             Core Capabilities
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+            <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:border-primary/40 transition-colors">
               <CardHeader>
                 <Brain className="h-8 w-8 text-primary mb-2" />
                 <CardTitle>Multi-Agent Orchestration</CardTitle>
@@ -99,7 +88,7 @@ const ProductsPage = () => {
               </CardHeader>
             </Card>
 
-            <Card className="border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+            <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:border-primary/40 transition-colors">
               <CardHeader>
                 <Database className="h-8 w-8 text-primary mb-2" />
                 <CardTitle>Memory + Context Layer</CardTitle>
@@ -109,7 +98,7 @@ const ProductsPage = () => {
               </CardHeader>
             </Card>
 
-            <Card className="border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+            <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:border-primary/40 transition-colors">
               <CardHeader>
                 <Cpu className="h-8 w-8 text-primary mb-2" />
                 <CardTitle>Quantum-Enhanced Hooks</CardTitle>
@@ -132,25 +121,30 @@ const ProductsPage = () => {
                 Our quantum-enhanced neural network delivers unprecedented performance improvements:
               </p>
               <div className="space-y-4">
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 bg-primary/5 p-4 rounded-lg">
                   <BarChart4 className="h-6 w-6 text-primary" />
                   <span className="text-lg">44.6% speedup on semantic search</span>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 bg-primary/5 p-4 rounded-lg">
                   <Zap className="h-6 w-6 text-primary" />
                   <span className="text-lg">Enhanced code quality & accuracy</span>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 bg-primary/5 p-4 rounded-lg">
                   <Network className="h-6 w-6 text-primary" />
                   <span className="text-lg">Hybrid GPU + quantum training</span>
                 </div>
               </div>
             </div>
             <Card className="border-0 bg-gradient-to-br from-primary/5 to-primary/10 p-8">
-              <div className="grid grid-cols-3 gap-4 opacity-80">
+              <div className="grid grid-cols-3 gap-4">
                 {Array.from({ length: 9 }).map((_, i) => (
-                  <div key={i} className="aspect-square rounded-lg bg-primary/20 animate-pulse" 
-                    style={{ animationDelay: `${i * 0.1}s` }}
+                  <div 
+                    key={i} 
+                    className="aspect-square rounded-lg bg-gradient-to-br from-primary/20 to-primary/30 animate-pulse" 
+                    style={{ 
+                      animationDelay: `${i * 0.1}s`,
+                      boxShadow: 'inset 0 0 15px rgba(75, 111, 237, 0.2)'
+                    }}
                   />
                 ))}
               </div>
@@ -165,12 +159,17 @@ const ProductsPage = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => (
-              <Card key={index} className="border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+              <Card 
+                key={index} 
+                className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:border-primary/40 transition-colors"
+              >
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <feature.icon className="h-6 w-6 text-primary" />
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <feature.icon className="h-6 w-6 text-primary" />
+                    </div>
                     {feature.completed && (
-                      <span className="text-sm text-green-500 flex items-center">
+                      <span className="text-sm text-green-500 flex items-center bg-green-500/10 px-3 py-1 rounded-full">
                         <CheckCircle2 className="h-4 w-4 mr-1" />
                         Ready
                       </span>
