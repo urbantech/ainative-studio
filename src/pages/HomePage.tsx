@@ -27,9 +27,11 @@ const HomePage = () => {
             <Button size="lg" className="bg-primary hover:bg-primary/90">
               Start Free Trial
             </Button>
-            <Button size="lg" variant="outline">
-              See Pricing
-            </Button>
+            <Link to="/pricing">
+              <Button size="lg" variant="outline">
+                See Pricing
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

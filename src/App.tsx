@@ -12,6 +12,7 @@ import DevResourcesPage from '@/pages/DevResourcesPage';
 import ProductsPage from '@/pages/ProductsPage';
 import EnterprisePage from '@/pages/EnterprisePage';
 import DownloadPage from '@/pages/DownloadPage';
+import PricingPage from '@/pages/PricingPage';
 import './App.css';
 
 // Scroll to hash component
@@ -50,6 +51,7 @@ function App() {
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/enterprise" element={<EnterprisePage />} />
               <Route path="/download" element={<DownloadPage />} />
+              <Route path="/pricing" element={<PricingPage />} />
             </Routes>
           </main>
           <Footer />
@@ -59,4 +61,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
