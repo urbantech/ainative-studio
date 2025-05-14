@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Building2, Users, Shield, Zap, Brain, Code, Search, GitBranch, FileCode, TestTube, Bot, Terminal, ArrowRight, CheckCircle2, Network, PenTool as Tool, Eye } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const FeatureTag = ({ children }: { children: React.ReactNode }) => (
   <div className="bg-primary/5 text-primary px-4 py-2 rounded-full text-sm font-medium">
@@ -22,12 +23,16 @@ export default function EnterprisePage() {
             Modernize your development team with AI to ship products faster, without the risk.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
-              Contact Us
-            </Button>
-            <Button size="lg" variant="outline">
-              View Plans
-            </Button>
+            <a href="http://calendly.com/seedlingstudio/" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="bg-primary hover:bg-primary/90">
+                Schedule a Demo
+              </Button>
+            </a>
+            <Link to="/pricing">
+              <Button variant="outline" size="lg">
+                View Plans
+              </Button>
+            </Link>
           </div>
         </div>
 
