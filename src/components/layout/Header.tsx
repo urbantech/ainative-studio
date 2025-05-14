@@ -22,21 +22,11 @@ const Header = () => {
 
   const navigation = [
     { name: 'Products', path: '/products' },
-    { name: 'Pricing', path: '/#pricing' },
+    { name: 'Pricing', path: '/pricing' },
     { name: 'Enterprise', path: '/enterprise' },
     { name: 'Developer Resources', path: '/dev-resources' },
     { name: 'Download', path: '/download' },
   ];
-
-  const scrollToPricing = (e: React.MouseEvent) => {
-    if (location.pathname === '/') {
-      e.preventDefault();
-      const pricingSection = document.getElementById('pricing');
-      if (pricingSection) {
-        pricingSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
 
   return (
     <header
@@ -50,7 +40,7 @@ const Header = () => {
       <div className="container-custom mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <Link to="/" className="text-2xl font-bold text-gray-800 dark:text-white">
-            <span className="text-[#FF6B00]">⚡</span>Access<span className="text-primary">Kit</span>
+            <span className="text-[#FF6B00]">⚡</span>AI<span className="text-primary">Native</span>
           </Link>
         </div>
 
@@ -60,7 +50,6 @@ const Header = () => {
             <Link
               key={item.name}
               to={item.path}
-              onClick={item.path === '/#pricing' ? scrollToPricing : undefined}
               className="text-sm font-medium text-neutral-muted hover:text-primary dark:text-gray-200 dark:hover:text-primary transition-colors"
             >
               {item.name}
@@ -122,12 +111,7 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                onClick={(e) => {
-                  if (item.path === '/#pricing') {
-                    scrollToPricing(e);
-                  }
-                  setMobileMenuOpen(false);
-                }}
+                onClick={() => setMobileMenuOpen(false)}
                 className="text-lg font-medium text-neutral-muted hover:text-primary dark:text-gray-200 dark:hover:text-primary"
               >
                 {item.name}
