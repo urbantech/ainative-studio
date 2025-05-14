@@ -2,36 +2,189 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FileText, Book, Code, Terminal, ArrowRight, Database, Network, Brain, Cpu } from "lucide-react";
+import { 
+  FileText, Book, Code, Terminal, ArrowRight, Database, 
+  Network, Brain, Cpu, MessageSquare, Search, Bug, 
+  BarChart2, Users, Folder, AlertTriangle, Shield
+} from 'lucide-react';
+
+const ApiSection = ({ title, icon: Icon, description, endpoints }) => (
+  <Card className="mb-8">
+    <CardHeader>
+      <div className="flex items-center gap-3 mb-2">
+        <Icon className="h-6 w-6 text-primary" />
+        <CardTitle>{title}</CardTitle>
+      </div>
+      <CardDescription>{description}</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <div className="space-y-4">
+        {endpoints.map((endpoint, index) => (
+          <div key={index} className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <div className="flex items-center gap-2 mb-2">
+              <span className={`text-sm font-mono px-2 py-1 rounded ${
+                endpoint.method === 'GET' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300' :
+                endpoint.method === 'POST' ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300' :
+                endpoint.method === 'PUT' ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300' :
+                'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300'
+              }`}>
+                {endpoint.method}
+              </span>
+              <code className="text-sm">{endpoint.path}</code>
+            </div>
+            <p className="text-sm text-gray-600 dark:text-gray-300">{endpoint.description}</p>
+          </div>
+        ))}
+      </div>
+    </CardContent>
+  </Card>
+);
 
 export default function DevResourcesPage() {
   const [selectedLanguage, setSelectedLanguage] = useState('react');
 
   const apiEndpoints = {
-    coordination: [
-      { method: 'POST', endpoint: '/messages/', description: 'Create inter-agent messages' },
-      { method: 'GET', endpoint: '/messages/{agent_id}', description: 'Get messages for an agent' },
-      { method: 'POST', endpoint: '/sequences/', description: 'Create new task sequences' },
-      { method: 'POST', endpoint: '/sequences/{sequence_id}/tasks', description: 'Add tasks to a sequence' },
-      { method: 'POST', endpoint: '/sequences/{sequence_id}/execute', description: 'Execute a task sequence' },
-      { method: 'GET', endpoint: '/sequences/{sequence_id}', description: 'Get sequence status' },
-      { method: 'GET', endpoint: '/agents/workload', description: 'Get agent workload statistics' },
-      { method: 'PUT', endpoint: '/messages/{message_id}/read', description: 'Mark messages as read' }
-    ],
-    memory: [
-      { method: 'POST', endpoint: '/agent/framework/memory', description: 'Create agent memory' },
-      { method: 'GET', endpoint: '/agent/framework/memory/{memory_id}', description: 'Get memory by ID' },
-      { method: 'PUT', endpoint: '/agent/framework/memory/{memory_id}', description: 'Update memory' },
-      { method: 'DELETE', endpoint: '/agent/framework/memory/{memory_id}', description: 'Delete memory' },
-      { method: 'POST', endpoint: '/agent/framework/memory/semantic-search', description: 'Semantic search of memories' }
-    ],
-    orchestration: [
-      { method: 'POST', endpoint: '/agents', description: 'Create an agent instance' },
-      { method: 'GET', endpoint: '/agents', description: 'List all agent instances' },
-      { method: 'POST', endpoint: '/tasks', description: 'Create and assign a task' },
-      { method: 'POST', endpoint: '/tasks/{task_id}/execute', description: 'Execute a specific task' },
-      { method: 'GET', endpoint: '/tasks/{task_id}', description: 'Get task status' }
-    ]
+    context: {
+      title: "Context Management",
+      icon: Brain,
+      description: "Endpoints for managing AI context and conversations",
+      endpoints: [
+        { method: 'GET', path: '/api/v1/ai-context/contexts/', description: 'List all contexts' },
+        { method: 'GET', path: '/api/v1/ai-context/contexts/{context_id}', description: 'Get specific context' },
+        { method: 'GET', path: '/api/v1/ai-context/conversations/', description: 'List all conversations' },
+        { method: 'GET', path: '/api/v1/ai-context/conversations/{conversation_id}', description: 'Get specific conversation' },
+        { method: 'POST', path: '/api/v1/ai-context/conversations/{conversation_id}/messages/', description: 'Add message to conversation' }
+      ]
+    },
+    orchestration: {
+      title: "AI Orchestration",
+      icon: Network,
+      description: "Endpoints for managing AI requests and orchestration",
+      endpoints: [
+        { method: 'POST', path: '/api/v1/ai-orchestration/requests', description: 'Create new AI request' },
+        { method: 'GET', path: '/api/v1/ai-orchestration/requests/{request_id}', description: 'Get request status' }
+      ]
+    },
+    usage: {
+      title: "Usage & Analytics",
+      icon: BarChart2,
+      description: "Endpoints for monitoring AI usage and costs",
+      endpoints: [
+        { method: 'GET', path: '/api/v1/ai-usage/aggregate', description: 'Get aggregated usage statistics' },
+        { method: 'GET', path: '/api/v1/ai-usage/cache/metrics', description: 'Get cache performance metrics' },
+        { method: 'GET', path: '/api/v1/ai-usage/costs', description: 'Get usage costs' },
+        { method: 'GET', path: '/api/v1/ai-usage/logs', description: 'Get usage logs' },
+        { method: 'GET', path: '/api/v1/ai-usage/logs/{log_id}', description: 'Get specific log entry' }
+      ]
+    },
+    chat: {
+      title: "Chat Sessions",
+      icon: MessageSquare,
+      description: "Endpoints for managing chat sessions and messages",
+      endpoints: [
+        { method: 'GET', path: '/api/v1/chat/sessions/', description: 'List all chat sessions' },
+        { method: 'GET', path: '/api/v1/chat/sessions/{chat_session_id}', description: 'Get specific chat session' },
+        { method: 'GET', path: '/api/v1/chat/sessions/{chat_session_id}/messages/', description: 'Get messages for a chat session' }
+      ]
+    },
+    codeQuality: {
+      title: "Code Quality",
+      icon: Code,
+      description: "Endpoints for code analysis and improvements",
+      endpoints: [
+        { method: 'GET', path: '/api/v1/code-quality/', description: 'Get code quality overview' },
+        { method: 'GET', path: '/api/v1/code-quality/agent', description: 'Get code quality agent status' },
+        { method: 'POST', path: '/api/v1/code-quality/fixes', description: 'Get suggested code fixes' },
+        { method: 'POST', path: '/api/v1/code-quality/fixes/direct', description: 'Apply code fixes directly' },
+        { method: 'GET', path: '/api/v1/code-quality/{analysis_id}', description: 'Get specific analysis results' }
+      ]
+    },
+    debugging: {
+      title: "Debugging",
+      icon: Bug,
+      description: "Endpoints for debugging sessions and analysis",
+      endpoints: [
+        { method: 'POST', path: '/api/v1/debugging/analyze', description: 'Analyze code for debugging' },
+        { method: 'GET', path: '/api/v1/debugging/sessions', description: 'List debugging sessions' },
+        { method: 'GET', path: '/api/v1/debugging/sessions/{session_id}', description: 'Get session details' },
+        { method: 'GET', path: '/api/v1/debugging/sessions/{session_id}/details', description: 'Get detailed session info' },
+        { method: 'GET', path: '/api/v1/debugging/sessions/{session_id}/steps', description: 'Get debugging steps' },
+        { method: 'GET', path: '/api/v1/debugging/sessions/{session_id}/suggestions', description: 'Get debugging suggestions' },
+        { method: 'GET', path: '/api/v1/debugging/sessions/{session_id}/test-cases', description: 'Get test cases' },
+        { method: 'GET', path: '/api/v1/debugging/steps', description: 'List all debugging steps' },
+        { method: 'GET', path: '/api/v1/debugging/steps/{step_id}', description: 'Get specific step details' },
+        { method: 'GET', path: '/api/v1/debugging/suggestions', description: 'List all debugging suggestions' },
+        { method: 'GET', path: '/api/v1/debugging/test-cases', description: 'List all test cases' }
+      ]
+    },
+    documents: {
+      title: "Documents",
+      icon: FileText,
+      description: "Endpoints for document management and search",
+      endpoints: [
+        { method: 'GET', path: '/api/v1/documents/', description: 'List all documents' },
+        { method: 'POST', path: '/api/v1/documents/search', description: 'Search documents' },
+        { method: 'GET', path: '/api/v1/documents/{document_id}', description: 'Get specific document' }
+      ]
+    },
+    errorAnalysis: {
+      title: "Error Analysis",
+      icon: AlertTriangle,
+      description: "Endpoints for error analysis and metrics",
+      endpoints: [
+        { method: 'GET', path: '/api/v1/error-analysis/errors', description: 'List all errors' },
+        { method: 'POST', path: '/api/v1/error-analysis/errors/analyze', description: 'Analyze errors' },
+        { method: 'GET', path: '/api/v1/error-analysis/errors/metrics/{project_id}', description: 'Get error metrics' },
+        { method: 'GET', path: '/api/v1/error-analysis/errors/{analysis_id}', description: 'Get analysis details' }
+      ]
+    },
+    health: {
+      title: "Health Checks",
+      icon: Shield,
+      description: "Endpoints for system health monitoring",
+      endpoints: [
+        { method: 'GET', path: '/api/v1/health', description: 'Check system health' },
+        { method: 'GET', path: '/api/v1/health/', description: 'Detailed health check' }
+      ]
+    },
+    memories: {
+      title: "Memory Management",
+      icon: Database,
+      description: "Endpoints for managing AI memories",
+      endpoints: [
+        { method: 'GET', path: '/api/v1/memories/', description: 'List all memories' },
+        { method: 'GET', path: '/api/v1/memories/{memory_id}', description: 'Get specific memory' }
+      ]
+    },
+    organizations: {
+      title: "Organizations",
+      icon: Users,
+      description: "Endpoints for organization management",
+      endpoints: [
+        { method: 'GET', path: '/api/v1/organizations/', description: 'List organizations' },
+        { method: 'GET', path: '/api/v1/organizations/{organization_id}', description: 'Get organization details' },
+        { method: 'GET', path: '/api/v1/organizations/{organization_id}/members/{user_id}', description: 'Get member details' }
+      ]
+    },
+    projects: {
+      title: "Projects",
+      icon: Folder,
+      description: "Endpoints for project management",
+      endpoints: [
+        { method: 'GET', path: '/api/v1/projects/', description: 'List all projects' },
+        { method: 'GET', path: '/api/v1/projects/{project_id}', description: 'Get project details' }
+      ]
+    },
+    users: {
+      title: "Users",
+      icon: Users,
+      description: "Endpoints for user management",
+      endpoints: [
+        { method: 'GET', path: '/api/v1/users/', description: 'List all users' },
+        { method: 'GET', path: '/api/v1/users/me/', description: 'Get current user' },
+        { method: 'GET', path: '/api/v1/users/{user_id}', description: 'Get user details' }
+      ]
+    }
   };
 
   const sdkExamples = {
@@ -132,95 +285,9 @@ function CodeReviewScreen() {
 
             <TabsContent value="api">
               <div className="grid grid-cols-1 gap-8">
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-2">
-                      <Network className="h-6 w-6 text-primary" />
-                      <CardTitle>Agent Coordination API</CardTitle>
-                    </div>
-                    <CardDescription>Endpoints for managing agent communication and task coordination</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      {apiEndpoints.coordination.map((endpoint, index) => (
-                        <div key={index} className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className={`text-sm font-mono px-2 py-1 rounded ${
-                              endpoint.method === 'GET' ? 'bg-blue-100 text-blue-700' :
-                              endpoint.method === 'POST' ? 'bg-green-100 text-green-700' :
-                              endpoint.method === 'PUT' ? 'bg-yellow-100 text-yellow-700' :
-                              'bg-red-100 text-red-700'
-                            }`}>
-                              {endpoint.method}
-                            </span>
-                            <code className="text-sm">{endpoint.endpoint}</code>
-                          </div>
-                          <p className="text-sm text-gray-600 dark:text-gray-300">{endpoint.description}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-2">
-                      <Brain className="h-6 w-6 text-primary" />
-                      <CardTitle>Memory Framework API</CardTitle>
-                    </div>
-                    <CardDescription>Endpoints for managing agent memory and context</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      {apiEndpoints.memory.map((endpoint, index) => (
-                        <div key={index} className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className={`text-sm font-mono px-2 py-1 rounded ${
-                              endpoint.method === 'GET' ? 'bg-blue-100 text-blue-700' :
-                              endpoint.method === 'POST' ? 'bg-green-100 text-green-700' :
-                              endpoint.method === 'PUT' ? 'bg-yellow-100 text-yellow-700' :
-                              'bg-red-100 text-red-700'
-                            }`}>
-                              {endpoint.method}
-                            </span>
-                            <code className="text-sm">{endpoint.endpoint}</code>
-                          </div>
-                          <p className="text-sm text-gray-600 dark:text-gray-300">{endpoint.description}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-2">
-                      <Cpu className="h-6 w-6 text-primary" />
-                      <CardTitle>Orchestration API</CardTitle>
-                    </div>
-                    <CardDescription>Endpoints for managing agent instances and tasks</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      {apiEndpoints.orchestration.map((endpoint, index) => (
-                        <div key={index} className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className={`text-sm font-mono px-2 py-1 rounded ${
-                              endpoint.method === 'GET' ? 'bg-blue-100 text-blue-700' :
-                              endpoint.method === 'POST' ? 'bg-green-100 text-green-700' :
-                              endpoint.method === 'PUT' ? 'bg-yellow-100 text-yellow-700' :
-                              'bg-red-100 text-red-700'
-                            }`}>
-                              {endpoint.method}
-                            </span>
-                            <code className="text-sm">{endpoint.endpoint}</code>
-                          </div>
-                          <p className="text-sm text-gray-600 dark:text-gray-300">{endpoint.description}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+                {Object.values(apiEndpoints).map((section, index) => (
+                  <ApiSection key={index} {...section} />
+                ))}
               </div>
             </TabsContent>
 
