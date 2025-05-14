@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Brain, Network, Scale, Cpu, Database, Users, Sparkles, ArrowRight, FileText, Book, Rocket, Flask } from 'lucide-react';
+import { Brain, Network, Scale, Cpu, Database, Users, Sparkles, ArrowRight, FileText, Book, Rocket, FlaskRound as Flask } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {

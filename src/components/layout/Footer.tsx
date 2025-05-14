@@ -45,8 +45,18 @@ const Footer = () => {
             <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">PRODUCT</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/products" className="text-gray-400 hover:text-primary text-sm transition-colors">
-                  Products
+                <Link to="/products/ide" className="text-gray-400 hover:text-primary text-sm transition-colors">
+                  AI Native Studio IDE
+                </Link>
+              </li>
+              <li>
+                <Link to="/products/qnn" className="text-gray-400 hover:text-primary text-sm transition-colors">
+                  Quantum Neural Network
+                </Link>
+              </li>
+              <li>
+                <Link to="/enterprise" className="text-gray-400 hover:text-primary text-sm transition-colors">
+                  Enterprise
                 </Link>
               </li>
               <li>
@@ -57,11 +67,6 @@ const Footer = () => {
               <li>
                 <Link to="/dev-resources" className="text-gray-400 hover:text-primary text-sm transition-colors">
                   Developer Resources
-                </Link>
-              </li>
-              <li>
-                <Link to="/support" className="text-gray-400 hover:text-primary text-sm transition-colors flex items-center">
-                  Support <ArrowUpRight className="ml-1 h-3 w-3" />
                 </Link>
               </li>
             </ul>
