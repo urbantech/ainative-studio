@@ -5,14 +5,14 @@ import { ArrowUpRight } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-50 dark:bg-gray-900 py-12 mt-16">
+    <footer className="bg-[#0B0F1A] py-12">
       <div className="container-custom mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <Link to="/" className="text-2xl font-bold text-gray-800 dark:text-white mb-4 block">
+            <Link to="/" className="text-2xl font-bold text-white mb-4 block">
               <span className="text-[#FF6B00]">⚡</span>AI<span className="text-primary">Native</span>
             </Link>
-            <p className="text-gray-600 dark:text-gray-300 text-sm mb-6 max-w-md">
+            <p className="text-gray-400 text-sm mb-6 max-w-md">
               Build the future with AI-native development tools powered by quantum neural networks.
             </p>
             <div className="flex space-x-4">
@@ -20,7 +20,7 @@ const Footer = () => {
                 href="https://twitter.com/ainativestudio" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors"
+                className="text-gray-400 hover:text-primary transition-colors"
                 aria-label="Twitter"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -31,7 +31,7 @@ const Footer = () => {
                 href="https://github.com/ainativestudio"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors"
+                className="text-gray-400 hover:text-primary transition-colors"
                 aria-label="GitHub"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -42,25 +42,25 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-gray-800 dark:text-white uppercase tracking-wider mb-4">Product</h3>
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">PRODUCT</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/products" className="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm transition-colors">
+                <Link to="/products" className="text-gray-400 hover:text-primary text-sm transition-colors">
                   Products
                 </Link>
               </li>
               <li>
-                <Link to="/#pricing" className="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm transition-colors">
+                <Link to="/pricing" className="text-gray-400 hover:text-primary text-sm transition-colors">
                   Pricing
                 </Link>
               </li>
               <li>
-                <Link to="/dev-resources" className="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm transition-colors">
+                <Link to="/dev-resources" className="text-gray-400 hover:text-primary text-sm transition-colors">
                   Developer Resources
                 </Link>
               </li>
               <li>
-                <Link to="/support" className="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm transition-colors flex items-center">
+                <Link to="/support" className="text-gray-400 hover:text-primary text-sm transition-colors flex items-center">
                   Support <ArrowUpRight className="ml-1 h-3 w-3" />
                 </Link>
               </li>
@@ -68,25 +68,25 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-gray-800 dark:text-white uppercase tracking-wider mb-4">Company</h3>
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">COMPANY</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/about" className="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm transition-colors">
+                <Link to="/about" className="text-gray-400 hover:text-primary text-sm transition-colors">
                   About
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm transition-colors">
+                <Link to="/privacy" className="text-gray-400 hover:text-primary text-sm transition-colors">
                   Privacy
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm transition-colors">
+                <Link to="/terms" className="text-gray-400 hover:text-primary text-sm transition-colors">
                   Terms
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-primary text-sm transition-colors">
+                <Link to="/contact" className="text-gray-400 hover:text-primary text-sm transition-colors">
                   Contact
                 </Link>
               </li>
@@ -95,17 +95,17 @@ const Footer = () => {
         </div>
 
         <div className={cn(
-          "mt-12 pt-8 border-t border-gray-200 dark:border-gray-800",
+          "mt-12 pt-8 border-t border-gray-800",
           "flex flex-col md:flex-row justify-between items-center"
         )}>
-          <p className="text-gray-500 dark:text-gray-400 text-sm">
+          <p className="text-gray-400 text-sm">
             © {new Date().getFullYear()} AiNative Studio, All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6">
-            <Link to="/accessibility" className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary text-sm transition-colors">
+            <Link to="/accessibility" className="text-gray-400 hover:text-primary text-sm transition-colors">
               Accessibility
             </Link>
-            <Link to="/status" className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary text-sm transition-colors">
+            <Link to="/status" className="text-gray-400 hover:text-primary text-sm transition-colors">
               Status
             </Link>
           </div>
