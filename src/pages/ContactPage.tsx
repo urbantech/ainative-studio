@@ -67,8 +67,8 @@ export default function ContactPage() {
                 <ContactCard
                   icon={Phone}
                   title="Call Us"
-                  content="+1 (831) 555-0123"
-                  link="tel:+18315550123"
+                  content="(831) 295-1482"
+                  link="tel:+18312951482"
                 />
                 <ContactCard
                   icon={MapPin}
@@ -154,13 +154,12 @@ export default function ContactPage() {
                 Looking for enterprise-grade support? Our dedicated enterprise team is ready to help with custom solutions, deployment options, and premium support packages.
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex gap-4">
-              <Button variant="default" className="bg-primary hover:bg-primary/90">
-                Contact Enterprise Sales
-              </Button>
-              <Button variant="outline">
-                View Enterprise Plans
-              </Button>
+            <CardContent>
+              <a href="http://calendly.com/seedlingstudio/" target="_blank" rel="noopener noreferrer">
+                <Button variant="default" className="bg-primary hover:bg-primary/90">
+                  Contact Enterprise Sales
+                </Button>
+              </a>
             </CardContent>
           </Card>
         </div>
