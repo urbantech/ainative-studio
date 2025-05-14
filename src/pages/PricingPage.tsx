@@ -31,7 +31,7 @@ const PricingPage = () => {
   const displayedFeatures = showAllFeatures ? features : features.slice(0, 6);
 
   return (
-    <section className="py-24 bg-white dark:bg-gray-900">
+    <section className="full-width-section py-24 bg-white dark:bg-gray-900">
       <div className="container-custom mx-auto">
         <div className="text-center mb-16 fade-in">
           <h2 className="text-3xl md:text-4xl font-bold text-[#0E0D35] dark:text-white mb-4">
