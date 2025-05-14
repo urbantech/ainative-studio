@@ -9,6 +9,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* Animation classes */
@@ -81,7 +83,17 @@
   text-fill-color: transparent;
 }
 
-/* Responsive container */
+/* Full width section */
+.full-width-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* Container */
 .container-custom {
   width: 100%;
   max-width: 1280px;
@@ -91,19 +103,13 @@
   padding-right: 1rem;
 }
 
-/* Full width backgrounds */
-.full-width-bg {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-}
-
 /* Page wrapper */
 .page-wrapper {
   min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 /* Main content area */
