@@ -1,137 +1,186 @@
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Brain, Network, Scale, Cpu, Database, Users, Sparkles, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import {
+  Brain,
+  Network,
+  Scale,
+  Cpu,
+  Database,
+  Users,
+  Sparkles,
+  ArrowRight,
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
-const HomePage = () => {
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.6,
+      ease: 'easeOut',
+    },
+  }),
+};
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-        <div className="container-custom mx-auto text-center relative">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white leading-tight mb-6">
-            The AI Native Studio<br />for Builders
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            Experience the power of AI-native, full-stack development with memory, reasoning, and quantum acceleration.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="http://calendly.com/seedlingstudio/" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto">
+    <div className="flex flex-col bg-[#0D1117] text-white">
+
+      {/* Hero */}
+      <section className="pt-32 md:pt-40 pb-24 bg-gradient-to-b from-[#0D1117] to-[#161B22]">
+        <div className="container-custom max-w-4xl mx-auto text-center px-4">
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-6"
+          >
+            The AI Native Studio <span className="text-[#4B6FED]">For Builders</span>
+          </motion.h1>
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            transition={{ delay: 0.2 }}
+            className="text-lg md:text-xl text-gray-400 mb-10"
+          >
+            Empower your team with memory-powered agents, blazing-fast infrastructure,
+            and a quantum-accelerated IDE experience.
+          </motion.p>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            transition={{ delay: 0.35 }}
+          >
+            <a
+              href="https://calendly.com/seedlingstudio/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                size="lg"
+                className="w-full sm:w-auto bg-[#4B6FED] hover:bg-[#3A56D3] text-white shadow-md hover:shadow-lg"
+              >
                 Book a Call
               </Button>
             </a>
             <Link to="/pricing">
-              <Button size="lg" variant="outline" className="text-gray-700 dark:text-gray-200 w-full sm:w-auto">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto border-[#4B6FED] text-white hover:bg-[#4B6FED]/10"
+              >
                 See Pricing
               </Button>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Featured Highlights */}
-      <section className="py-16 bg-white dark:bg-gray-900">
-        <div className="container-custom mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <Brain className="h-8 w-8 text-primary mb-4" />
-                <CardTitle>Long-Term Memory</CardTitle>
-                <CardDescription>
-                  Persistent context understanding across sessions with advanced memory management.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Link to="/blog/memory" className="text-primary hover:underline inline-flex items-center">
-                  Learn more <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <Network className="h-8 w-8 text-primary mb-4" />
-                <CardTitle>Multi-Agent Coordination</CardTitle>
-                <CardDescription>
-                  Seamless collaboration between specialized AI agents for complex tasks.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Link to="/blog/agents" className="text-primary hover:underline inline-flex items-center">
-                  Learn more <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <Scale className="h-8 w-8 text-primary mb-4" />
-                <CardTitle>Scaling & Throughput</CardTitle>
-                <CardDescription>
-                  Enterprise-grade performance with quantum-enhanced processing capabilities.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Link to="/blog/scaling" className="text-primary hover:underline inline-flex items-center">
-                  Learn more <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </CardContent>
-            </Card>
-          </div>
+      {/* Highlights */}
+      <section className="py-20 bg-[#161B22]">
+        <div className="container-custom max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10">
+          {[
+            {
+              icon: Brain,
+              title: 'Memory-Powered Agents',
+              desc: 'Context-aware agents that remember your workflow and accelerate productivity.',
+              link: '/blog/memory',
+            },
+            {
+              icon: Network,
+              title: 'Multi-Agent Collaboration',
+              desc: 'Chain expert LLM agents to complete advanced software tasks together.',
+              link: '/blog/agents',
+            },
+            {
+              icon: Scale,
+              title: 'Quantum Speed Scaling',
+              desc: 'Experience near-instant inference and execution with enterprise scaling.',
+              link: '/blog/scaling',
+            },
+          ].map(({ icon: Icon, title, desc, link }, i) => (
+            <motion.div
+              key={title}
+              custom={i}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="bg-[#1C2128] rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+            >
+              <Icon className="h-8 w-8 text-[#4B6FED] mb-4" />
+              <h3 className="text-xl font-semibold mb-2">{title}</h3>
+              <p className="text-sm text-gray-400 mb-4">{desc}</p>
+              <Link
+                to={link}
+                className="inline-flex items-center text-[#4B6FED] hover:underline text-sm font-medium"
+              >
+                Learn more <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* Platform Features Grid */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
-        <div className="container-custom mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Platform Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="border-0">
-              <CardHeader>
-                <Cpu className="h-8 w-8 text-primary mb-4" />
-                <CardTitle>Core App</CardTitle>
-                <CardDescription>
-                  Advanced IDE with AI-powered code completion, refactoring, and debugging.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0">
-              <CardHeader>
-                <Database className="h-8 w-8 text-primary mb-4" />
-                <CardTitle>QNN APIs</CardTitle>
-                <CardDescription>
-                  Quantum Neural Network APIs for accelerated machine learning operations.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0">
-              <CardHeader>
-                <Sparkles className="h-8 w-8 text-primary mb-4" />
-                <CardTitle>MCP Stack</CardTitle>
-                <CardDescription>
-                  Memory, Coordination, and Processing stack for AI-native development.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0">
-              <CardHeader>
-                <Users className="h-8 w-8 text-primary mb-4" />
-                <CardTitle>Shared Memory Agents</CardTitle>
-                <CardDescription>
-                  Collaborative AI agents with shared context and memory systems.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+      {/* Platform Features */}
+      <section className="py-20 bg-[#0D1117]">
+        <div className="container-custom max-w-6xl mx-auto px-4">
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold text-center mb-14"
+          >
+            Platform Features
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {[
+              {
+                icon: Cpu,
+                title: 'AI-Powered IDE',
+                desc: 'Context-aware code suggestions, refactoring, and test generation in real-time.',
+              },
+              {
+                icon: Database,
+                title: 'QNN API Layer',
+                desc: 'Expose quantum-accelerated ML APIs to frontend or microservices securely.',
+              },
+              {
+                icon: Sparkles,
+                title: 'MCP Stack',
+                desc: 'Memory, Coordination, and Processing stack built for native AI acceleration.',
+              },
+              {
+                icon: Users,
+                title: 'Team-Based Agents',
+                desc: 'Train agents to collaborate and share context across teams with persistent memory.',
+              },
+            ].map(({ icon: Icon, title, desc }, i) => (
+              <motion.div
+                key={title}
+                custom={i}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="bg-[#161B22] rounded-xl p-6 border border-[#2D333B] hover:border-[#4B6FED] hover:shadow-lg transition-all duration-300"
+              >
+                <Icon className="h-6 w-6 text-[#4B6FED] mb-4" />
+                <h3 className="text-lg font-semibold mb-1">{title}</h3>
+                <p className="text-sm text-gray-400">{desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
     </div>
   );
-};
-
-export default HomePage;
+}

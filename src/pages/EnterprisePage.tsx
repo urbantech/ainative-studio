@@ -1,214 +1,199 @@
 import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Building2, Users, Shield, Zap, Brain, Code, Search, GitBranch, FileCode, TestTube, Bot, Terminal, ArrowRight, CheckCircle2, Network, PenTool as Tool, Eye } from 'lucide-react';
+import {
+  Zap, Users, Shield, Terminal, Code, Brain, Bot,
+  Network, ArrowRight, CheckCircle2, PenTool as Tool, Eye
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-const FeatureTag = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-primary/5 text-primary px-4 py-2 rounded-full text-sm font-medium">
+const fadeIn = {
+  hidden: { opacity: 0, y: 40 },
+  show: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.6, ease: 'easeOut' },
+  }),
+};
+
+const Section = ({ children, title }: { children: React.ReactNode; title?: string }) => (
+  <section className="space-y-12">
+    {title && (
+      <motion.h2
+        variants={fadeIn}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="text-3xl font-bold text-center text-white"
+      >
+        {title}
+      </motion.h2>
+    )}
     {children}
-  </div>
+  </section>
+);
+
+const FeatureTag = ({ children }: { children: React.ReactNode }) => (
+  <motion.div
+    variants={fadeIn}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true }}
+    className="bg-[#4B6FED]/10 text-[#4B6FED] px-4 py-2 rounded-full text-sm font-medium"
+  >
+    {children}
+  </motion.div>
 );
 
 export default function EnterprisePage() {
   return (
-    <div className="full-width-section bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-4 py-16">
+    <div className="bg-[#0D1117] text-white pt-36 pb-28">
+      <div className="max-w-6xl mx-auto px-4 space-y-28">
+
         {/* Hero Section */}
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">
-            Quantum Enabled AI for Enterprise Software Development
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-center space-y-6"
+        >
+          <h1 className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#4B6FED] to-white">
+            Quantum-Enabled AI for Enterprise Teams
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-            Modernize your development team with AI to ship products faster, without the risk.
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            Accelerate software delivery with secure, memory-native AI that works across your SDLC.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center gap-4 pt-2 flex-wrap">
             <a href="http://calendly.com/seedlingstudio/" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto">
+              <Button size="lg" className="bg-[#4B6FED] hover:bg-[#3A56D3] text-white shadow-md">
                 Schedule a Demo
               </Button>
             </a>
             <Link to="/pricing">
-              <Button variant="outline" size="lg" className="text-gray-700 dark:text-gray-200 w-full sm:w-auto">
+              <Button variant="outline" size="lg" className="text-white border-white/20 hover:bg-white/5">
                 View Plans
               </Button>
             </Link>
           </div>
-        </div>
+        </motion.div>
 
         {/* Outcome Benefits */}
-        <div className="max-w-6xl mx-auto mb-16">
+        <Section title="Business Impact">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-              <CardHeader>
-                <Zap className="h-8 w-8 text-primary mb-2" />
-                <CardTitle>Increase in Developer Productivity</CardTitle>
-                <CardDescription>
-                  Accelerate time-to-delivery by decreasing PR cycle times and reaping the benefits of higher developer output.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-              <CardHeader>
-                <Users className="h-8 w-8 text-primary mb-2" />
-                <CardTitle>Decrease in Onboarding Time</CardTitle>
-                <CardDescription>
-                  Enable smoother ramp-up with less tech debt and more maintainable, modern code.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-              <CardHeader>
-                <Shield className="h-8 w-8 text-primary mb-2" />
-                <CardTitle>Enterprise-Ready</CardTitle>
-                <CardDescription>
-                  Solutions built for security, compliance, change management, and analytics.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+            {[
+              { icon: Zap, title: 'Boost Output', desc: 'Accelerate PRs and reduce delivery lag by 40%+' },
+              { icon: Users, title: 'Faster Onboarding', desc: 'Ramp new engineers with contextual agents' },
+              { icon: Shield, title: 'Built for Compliance', desc: 'Full audit trails, RBAC, and hybrid deployment' }
+            ].map(({ icon: Icon, title, desc }, i) => (
+              <motion.div key={i} custom={i} variants={fadeIn} initial="hidden" whileInView="show" viewport={{ once: true }}>
+                <Card className="bg-[#1C2128]/80 backdrop-blur-md border border-white/10 rounded-xl p-6 hover:shadow-lg transition-all">
+                  <CardHeader>
+                    <Icon className="h-7 w-7 text-[#4B6FED] mb-3" />
+                    <CardTitle>{title}</CardTitle>
+                    <CardDescription className="text-gray-400">{desc}</CardDescription>
+                  </CardHeader>
+                </Card>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </Section>
 
-        {/* Feature Tags */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-8">
-            Cody Can Handle
-          </h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <FeatureTag>Task Planning</FeatureTag>
-            <FeatureTag>Unit Test Generation</FeatureTag>
-            <FeatureTag>Code Modernization</FeatureTag>
-            <FeatureTag>Writing Test Scripts</FeatureTag>
-            <FeatureTag>Refactoring</FeatureTag>
-            <FeatureTag>Debugging</FeatureTag>
-            <FeatureTag>Semantic Code Search</FeatureTag>
-            <FeatureTag>Agent Reasoning</FeatureTag>
-            <FeatureTag>Enforcing Coding Standards</FeatureTag>
-            <FeatureTag>Language Translation</FeatureTag>
-            <FeatureTag>Code Reviews</FeatureTag>
-            <FeatureTag>Documentation Support</FeatureTag>
+        {/* Cody Can Handle Tags */}
+        <Section title="Cody Can Handle">
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              'Code Reviews', 'Refactoring', 'Task Planning', 'Test Generation',
+              'Debugging', 'Language Translation', 'Code Docs', 'Semantic Search',
+              'Enforce Standards', 'Agent Reasoning'
+            ].map((text, i) => <FeatureTag key={i}>{text}</FeatureTag>)}
           </div>
-        </div>
+        </Section>
 
-        {/* Deployment Matrix */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-8">
-            Deployment Options
-          </h2>
+        {/* Deployment Options */}
+        <Section title="Deployment Options">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-              <CardHeader>
-                <Terminal className="h-8 w-8 text-primary mb-2" />
-                <CardTitle>Cody IDE</CardTitle>
-                <CardDescription>
-                  Most advanced, optimized version with full feature access
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-              <CardHeader>
-                <Code className="h-8 w-8 text-primary mb-2" />
-                <CardTitle>Cody Plugin</CardTitle>
-                <CardDescription>
-                  Lightweight integration for VS Code and JetBrains (coming soon)
-                </CardDescription>
-              </CardHeader>
-            </Card>
+            {[
+              { icon: Terminal, title: 'Cody IDE', desc: 'Full-featured AI IDE with memory & coordination' },
+              { icon: Code, title: 'Plugin Mode', desc: 'Lightweight VS Code plugin (JetBrains coming)' },
+            ].map(({ icon: Icon, title, desc }, i) => (
+              <motion.div key={i} variants={fadeIn} initial="hidden" whileInView="show" viewport={{ once: true }}>
+                <Card className="bg-[#1C2128]/80 border border-white/10 rounded-xl p-6 hover:border-[#4B6FED] transition-all">
+                  <CardHeader>
+                    <Icon className="h-7 w-7 text-[#4B6FED] mb-3" />
+                    <CardTitle>{title}</CardTitle>
+                    <CardDescription className="text-gray-400">{desc}</CardDescription>
+                  </CardHeader>
+                </Card>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </Section>
 
         {/* Security Note */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <Card className="border-2 border-primary bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+        <Section title="Enterprise-Grade Security">
+          <Card className="bg-[#1C2128]/80 border border-[#4B6FED]/50 p-6 rounded-xl shadow-sm backdrop-blur-md">
             <CardHeader>
-              <div className="flex items-center gap-3">
-                <Shield className="h-8 w-8 text-primary" />
-                <CardTitle>Enterprise Security</CardTitle>
+              <div className="flex items-center gap-3 mb-3">
+                <Shield className="h-7 w-7 text-[#4B6FED]" />
+                <CardTitle>Self-hosted & Secure</CardTitle>
               </div>
-              <CardDescription>
-                <ul className="space-y-2 mt-4">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                    Self-hosted deployment options with air-gapped configurations
+              <CardDescription className="text-gray-400 space-y-2 mt-2">
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5" />
+                    Self-hosted or hybrid deployment (air-gapped optional)
                   </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
-                    No third-party dependencies; enterprise data never leaves the network
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5" />
+                    No third-party data sharing or vendor lock-in
                   </li>
                 </ul>
               </CardDescription>
             </CardHeader>
           </Card>
-        </div>
+        </Section>
 
         {/* Platform Capabilities */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-8">
-            Platform Capabilities
-          </h2>
+        <Section title="Platform Capabilities">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-              <CardHeader>
-                <Brain className="h-8 w-8 text-primary mb-2" />
-                <CardTitle>Context-Awareness Engine</CardTitle>
-                <CardDescription>
-                  Deep semantic indexing and quantum search
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-              <CardHeader>
-                <Bot className="h-8 w-8 text-primary mb-2" />
-                <CardTitle>Purpose-Built Models</CardTitle>
-                <CardDescription>
-                  Trained on repo structure for high-accuracy understanding
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-              <CardHeader>
-                <Tool className="h-8 w-8 text-primary mb-2" />
-                <CardTitle>Tool Use</CardTitle>
-                <CardDescription>
-                  Modular agent tools with autonomous reasoning support
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-              <CardHeader>
-                <Eye className="h-8 w-8 text-primary mb-2" />
-                <CardTitle>Human Action Tracking</CardTitle>
-                <CardDescription>
-                  Real-time developer intent tracking for adaptive responses
-                </CardDescription>
-              </CardHeader>
-            </Card>
+            {[
+              { icon: Brain, title: 'Context Engine', desc: 'Semantic memory + quantum reasoning' },
+              { icon: Bot, title: 'Purpose-Trained Agents', desc: 'Agents tuned to your codebase structure' },
+              { icon: Tool, title: 'Tool Orchestration', desc: 'Attach autonomous workflows via modular tools' },
+              { icon: Eye, title: 'Human Intent Tracking', desc: 'Adapt to dev actions and patterns in real-time' }
+            ].map(({ icon: Icon, title, desc }, i) => (
+              <motion.div key={i} variants={fadeIn} initial="hidden" whileInView="show" viewport={{ once: true }}>
+                <Card className="bg-[#1C2128]/80 border border-white/10 p-6 rounded-xl hover:border-[#4B6FED] transition-all">
+                  <CardHeader>
+                    <Icon className="h-7 w-7 text-[#4B6FED] mb-3" />
+                    <CardTitle>{title}</CardTitle>
+                    <CardDescription className="text-gray-400">{desc}</CardDescription>
+                  </CardHeader>
+                </Card>
+              </motion.div>
+            ))}
           </div>
-        </div>
+        </Section>
 
-        {/* Infrastructure */}
-        <div className="max-w-4xl mx-auto text-center">
-          <Card className="border border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 backdrop-blur-sm">
+        {/* Final CTA */}
+        <Section>
+          <Card className="bg-gradient-to-br from-[#4B6FED]/10 to-[#4B6FED]/5 border border-white/10 p-10 rounded-2xl shadow-sm backdrop-blur-md text-center">
             <CardHeader>
-              <Network className="h-12 w-12 text-primary mx-auto mb-4" />
-              <CardTitle className="text-2xl">Infrastructure</CardTitle>
-              <CardDescription className="text-lg">
-                Cody AI's QNN system powers orchestration with quantum-enhanced context reasoning, enabling real-time collaboration and ML Ops performance at enterprise scale
+              <Network className="h-10 w-10 text-[#4B6FED] mx-auto mb-4" />
+              <CardTitle className="text-2xl">Quantum Infrastructure</CardTitle>
+              <CardDescription className="text-gray-400 text-lg">
+                Cody AI orchestrates agents with QNN context resolution and real-time collaborative memory sync.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                Schedule a Demo <ArrowRight className="ml-2 h-4 w-4" />
+              <Button size="lg" className="bg-[#4B6FED] hover:bg-[#3A56D3] mt-6 text-white text-lg">
+                Book Your Demo <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </CardContent>
           </Card>
-        </div>
+        </Section>
+
       </div>
     </div>
   );

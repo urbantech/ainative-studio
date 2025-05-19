@@ -1,197 +1,197 @@
 import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { 
-  ArrowRight, 
-  Brain, 
-  Cpu, 
-  Code, 
-  Search, 
-  GitBranch, 
-  Bug, 
+import { motion } from 'framer-motion';
+import {
+  ArrowRight,
+  Brain,
+  Cpu,
+  Code,
+  Search,
+  GitBranch,
+  Bug,
   Database,
   Network,
   Zap,
   CheckCircle2,
   BarChart4,
-  Workflow
+  Workflow,
 } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
-const ProductsPage = () => {
-  const features = [
-    {
-      title: "Code Search",
-      description: "Semantic search powered by quantum-enhanced neural networks",
-      icon: Search,
-      completed: true
+const fadeIn = {
+  hidden: { opacity: 0, y: 40 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.6,
+      ease: 'easeOut',
     },
-    {
-      title: "Refactoring",
-      description: "Intelligent code restructuring with context awareness",
-      icon: GitBranch,
-      completed: true
-    },
-    {
-      title: "Debugging",
-      description: "Advanced error detection and correction",
-      icon: Bug,
-      completed: true
-    },
-    {
-      title: "Repo Understanding",
-      description: "Deep codebase analysis and documentation",
-      icon: Code,
-      completed: true
-    },
-    {
-      title: "Checkpoints",
-      description: "Automated code versioning and rollback",
-      icon: CheckCircle2,
-      completed: true
-    },
-    {
-      title: "CI/CD Integration",
-      description: "Seamless integration with your deployment pipeline",
-      icon: Workflow,
-      completed: true
-    }
-  ];
+  }),
+};
 
+const features = [
+  { title: 'Code Search', description: 'Semantic search powered by quantum-enhanced neural networks.', icon: Search, completed: true },
+  { title: 'Refactoring', description: 'Intelligent code restructuring with context awareness.', icon: GitBranch, completed: true },
+  { title: 'Debugging', description: 'Advanced error detection and correction.', icon: Bug, completed: true },
+  { title: 'Repo Understanding', description: 'Deep codebase analysis and documentation.', icon: Code, completed: true },
+  { title: 'Checkpoints', description: 'Automated code versioning and rollback.', icon: CheckCircle2, completed: true },
+  { title: 'CI/CD Integration', description: 'Seamless integration with your deployment pipeline.', icon: Workflow, completed: true },
+];
+
+export default function ProductsPage() {
   return (
-    <div className="full-width-section bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-      <div className="container mx-auto px-4 py-16">
-        {/* Hero Section */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-6">
-              Cody IDE
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              The world's first AI-native development environment powered by quantum neural networks
-            </p>
-          </div>
-        </div>
+    <div className="bg-[#0D1117] text-white font-sans">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 pb-32 space-y-32">
 
-        {/* Core Capabilities */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center">
+        {/* HERO */}
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={fadeIn}
+          className="text-center max-w-4xl mx-auto"
+        >
+          <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
+            Cody IDE
+          </h1>
+          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            The world’s first AI-native development environment powered by quantum neural networks.
+          </p>
+        </motion.div>
+
+        {/* CORE CAPABILITIES */}
+        <section className="space-y-14">
+          <motion.h2
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold text-center"
+          >
             Core Capabilities
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:border-primary/40 transition-colors">
-              <CardHeader>
-                <Brain className="h-8 w-8 text-primary mb-2" />
-                <CardTitle>Multi-Agent Orchestration</CardTitle>
-                <CardDescription>
-                  Coordinate multiple AI agents for complex development tasks with shared context and memory
-                </CardDescription>
-              </CardHeader>
-            </Card>
+          </motion.h2>
 
-            <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:border-primary/40 transition-colors">
-              <CardHeader>
-                <Database className="h-8 w-8 text-primary mb-2" />
-                <CardTitle>Memory + Context Layer</CardTitle>
-                <CardDescription>
-                  Persistent memory system for maintaining context across development sessions
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:border-primary/40 transition-colors">
-              <CardHeader>
-                <Cpu className="h-8 w-8 text-primary mb-2" />
-                <CardTitle>Quantum-Enhanced Hooks</CardTitle>
-                <CardDescription>
-                  React hooks supercharged with quantum computing capabilities
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
-
-        {/* QNN Section */}
-        <div className="max-w-6xl mx-auto mb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
-                Quantum Neural Network (QNN)
-              </h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
-                Our quantum-enhanced neural network delivers unprecedented performance improvements:
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-4 bg-primary/5 p-4 rounded-lg">
-                  <BarChart4 className="h-6 w-6 text-primary" />
-                  <span className="text-lg">44.6% speedup on semantic search</span>
-                </div>
-                <div className="flex items-center gap-4 bg-primary/5 p-4 rounded-lg">
-                  <Zap className="h-6 w-6 text-primary" />
-                  <span className="text-lg">Enhanced code quality & accuracy</span>
-                </div>
-                <div className="flex items-center gap-4 bg-primary/5 p-4 rounded-lg">
-                  <Network className="h-6 w-6 text-primary" />
-                  <span className="text-lg">Hybrid GPU + quantum training</span>
-                </div>
-              </div>
-            </div>
-            <Card className="border-0 bg-gradient-to-br from-primary/5 to-primary/10 p-8">
-              <div className="grid grid-cols-3 gap-4">
-                {Array.from({ length: 9 }).map((_, i) => (
-                  <div 
-                    key={i} 
-                    className="aspect-square rounded-lg bg-gradient-to-br from-primary/20 to-primary/30 animate-pulse" 
-                    style={{ 
-                      animationDelay: `${i * 0.1}s`,
-                      boxShadow: 'inset 0 0 15px rgba(75, 111, 237, 0.2)'
-                    }}
-                  />
-                ))}
-              </div>
-            </Card>
-          </div>
-        </div>
-
-        {/* Feature Grid */}
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-8 text-center">
-            Development Features
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
-              <Card 
-                key={index} 
-                className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:border-primary/40 transition-colors"
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {[
+              { icon: Brain, title: 'Multi-Agent Orchestration', desc: 'Coordinate multiple AI agents for complex development tasks with shared context and memory.' },
+              { icon: Database, title: 'Memory + Context Layer', desc: 'Persistent memory system for maintaining context across development sessions.' },
+              { icon: Cpu, title: 'Quantum-Enhanced Hooks', desc: 'React hooks supercharged with quantum computing capabilities.' },
+            ].map(({ icon: Icon, title, desc }, i) => (
+              <motion.div
+                key={title}
+                custom={i}
+                variants={fadeIn}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
               >
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <feature.icon className="h-6 w-6 text-primary" />
+                <Card className="bg-[#1C2128]/90 backdrop-blur-md border border-white/10 hover:scale-[1.02] transition-all rounded-xl p-6">
+                  <CardHeader className="space-y-3">
+                    <Icon className="h-8 w-8 text-[#4B6FED]" />
+                    <CardTitle className="text-lg font-semibold">{title}</CardTitle>
+                    <CardDescription className="text-sm text-gray-400">{desc}</CardDescription>
+                  </CardHeader>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* QNN SECTION */}
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Quantum Neural Network (QNN)</h2>
+            <p className="text-gray-400 mb-8">
+              Our quantum-enhanced neural network delivers unprecedented performance improvements:
+            </p>
+            <div className="space-y-4">
+              {[
+                { icon: BarChart4, text: '44.6% speedup on semantic search' },
+                { icon: Zap, text: 'Enhanced code quality & accuracy' },
+                { icon: Network, text: 'Hybrid GPU + quantum training' },
+              ].map(({ icon: Icon, text }, i) => (
+                <motion.div
+                  key={i}
+                  custom={i}
+                  variants={fadeIn}
+                  className="flex items-center gap-4 p-4 bg-[#1F2937] rounded-lg"
+                >
+                  <Icon className="h-6 w-6 text-[#4B6FED]" />
+                  <span className="text-base text-white">{text}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-3 gap-4 bg-[#4B6FED]/10 p-8 rounded-xl"
+            initial="hidden"
+            animate="show"
+          >
+            {Array.from({ length: 9 }).map((_, i) => (
+              <motion.div
+                key={i}
+                className="aspect-square rounded-lg bg-[#4B6FED]/30 animate-pulse"
+                style={{
+                  animationDelay: `${i * 0.1}s`,
+                  boxShadow: 'inset 0 0 15px rgba(75, 111, 237, 0.3)',
+                }}
+              />
+            ))}
+          </motion.div>
+        </section>
+
+        {/* DEVELOPMENT FEATURES */}
+        <section className="space-y-14">
+          <motion.h2
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold text-center"
+          >
+            Development Features
+          </motion.h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {features.map((feature, i) => (
+              <motion.div key={i} custom={i} variants={fadeIn}>
+                <Card className="bg-[#1C2128]/90 border border-white/10 hover:border-[#4B6FED] transition-all rounded-xl p-6">
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="p-2 bg-[#4B6FED]/10 rounded-md">
+                        <feature.icon className="h-6 w-6 text-[#4B6FED]" />
+                      </div>
+                      {feature.completed && (
+                        <span className="text-sm text-green-400 flex items-center gap-1 bg-green-500/10 px-2 py-1 rounded-full">
+                          <CheckCircle2 className="h-4 w-4" />
+                          Ready
+                        </span>
+                      )}
                     </div>
-                    {feature.completed && (
-                      <span className="text-sm text-green-500 flex items-center bg-green-500/10 px-3 py-1 rounded-full">
-                        <CheckCircle2 className="h-4 w-4 mr-1" />
-                        Ready
-                      </span>
-                    )}
-                  </div>
-                  <CardTitle>{feature.title}</CardTitle>
-                  <CardDescription>{feature.description}</CardDescription>
-                </CardHeader>
-              </Card>
+                    <CardTitle className="text-md font-semibold">{feature.title}</CardTitle>
+                    <CardDescription className="text-sm text-gray-400">{feature.description}</CardDescription>
+                  </CardHeader>
+                </Card>
+              </motion.div>
             ))}
           </div>
 
-          <div className="mt-12 text-center">
-            <Button className="bg-primary hover:bg-primary/90 text-white" size="lg">
+          <div className="mt-16 text-center">
+            <Button className="bg-[#4B6FED] hover:bg-[#3A56D3] text-white text-lg px-6 py-3 rounded-md shadow-md">
               Try Cody IDE Now
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
-        </div>
+        </section>
+
       </div>
     </div>
   );
-};
-
-export default ProductsPage;
+}
