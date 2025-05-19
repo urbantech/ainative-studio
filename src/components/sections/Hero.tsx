@@ -1,6 +1,4 @@
-import React from 'react';
 import { ButtonCustom } from '@/components/ui/button-custom';
-import { ArrowRight, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {

@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
-  FileText, Book, Code, Terminal, ArrowRight, Database, 
-  Network, Brain, Cpu, MessageSquare, Search, Bug, 
-  BarChart2, Users, Folder, AlertTriangle, Shield
+  FileText, Code, ArrowRight, Database, 
+  Network, Users, Folder, AlertTriangle, Shield,
+  LucideIcon, Brain, BarChart2, MessageSquare, Bug
 } from 'lucide-react';
 
-const ApiSection = ({ title, icon: Icon, description, endpoints }) => (
+interface Endpoint {
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | string;
+  path: string;
+  description: string;
+}
+
+interface ApiSectionProps {
+  title: string;
+  icon: LucideIcon;
+  description: string;
+  endpoints: Endpoint[];
+}
+
+const ApiSection = ({ title, icon: Icon, description, endpoints }: ApiSectionProps) => (
   <Card className="mb-8">
     <CardHeader>
       <div className="flex items-center gap-3 mb-2">
@@ -187,7 +200,7 @@ export default function DevResourcesPage() {
     }
   };
 
-  const sdkExamples = {
+  const sdkExamples: Record<string, string> = {
     react: `import { AINative, useAgent } from '@ainative/react';
 
 // Initialize the client

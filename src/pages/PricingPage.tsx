@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import {
-  Cpu, Shield, Users, Zap, Check, ChevronDown, ChevronUp
-} from 'lucide-react';
+import { useState } from 'react';
+import { Cpu, Shield, Users, Zap, Check, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const features = [
   { title: 'Local inference', start: true, pro: true, teams: true, enterprise: true },
@@ -104,7 +102,6 @@ export default function PricingPage() {
               )}
 
               <plan.icon className="h-6 w-6 text-[#4B6FED] mb-4" />
-              <h3 className="text-xl font-semibold mb-1">{plan.name}</h3>
               <p className="text-gray-400 mb-4 h-12">{plan.description}</p>
 
               <div className="mb-6">
@@ -112,9 +109,9 @@ export default function PricingPage() {
                 {plan.sub && <span className="ml-1 text-sm text-gray-400">{plan.sub}</span>}
               </div>
 
-              <Button
-                variant={plan.highlight ? 'primary' : 'outline'}
-                className="w-full mb-6"
+              <Button 
+                className="w-full mt-4" 
+                variant={plan.highlight ? 'default' : 'outline'}
               >
                 {plan.buttonText}
               </Button>

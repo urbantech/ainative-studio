@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,9 +11,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Mail, Phone, MapPin, MessageSquare, Clock, Building2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Building2, LucideIcon } from 'lucide-react';
 
-const ContactCard = ({ icon: Icon, title, content, link = '' }) => (
+interface ContactCardProps {
+  icon: LucideIcon;
+  title: string;
+  content: ReactNode;
+  link?: string;
+}
+
+const ContactCard = ({ icon: Icon, title, content, link = '' }: ContactCardProps) => (
   <Card className="border border-primary/20 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
     <CardHeader>
       <div className="flex items-center gap-3">

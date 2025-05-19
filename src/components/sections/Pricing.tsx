@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ButtonCustom } from '@/components/ui/button-custom';
 import { Check, ChevronDown, ChevronUp, Cpu, Shield, Users, Zap } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 interface PricingFeature {
   title: string;

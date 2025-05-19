@@ -1,7 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { ArrowUpRight } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -9,9 +7,9 @@ const Footer = () => {
       <div className="container-custom mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <Link to="/" className="text-2xl font-bold text-white mb-4 block">
+            <span className="text-2xl font-bold text-white mb-4 block">
               <span className="text-[#FF6B00]">⚡</span>AI<span className="text-primary">Native</span>
-            </Link>
+            </span>
             <p className="text-gray-400 text-sm mb-6 max-w-md">
               Build the future with AI-native development tools powered by quantum neural networks.
             </p>
