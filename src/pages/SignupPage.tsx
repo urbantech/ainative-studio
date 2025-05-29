@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 export default function SignupPage() {
   const handleGitHubLogin = () => {
     const clientId = "Ov23liU7x20VoRInkAiq"; // GitHub OAuth Client ID
-    const redirectUri = "http://localhost:3000/login-success"; // Your frontend callback page
+    const redirectUri = "https://ainative.studio/login-success"; // Your frontend callback page
     const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=read:user`;
     window.location.href = githubAuthUrl;
   };
